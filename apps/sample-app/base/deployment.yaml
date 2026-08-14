@@ -16,9 +16,24 @@ spec:
     spec:
       containers:
         - name: sample-app
-          image: nginxdemos/hello:plain-text
+          # This line gets automatically updated by the CI pipeline
+          # (see sample-app/.github/workflows/ci.yml) after every
+          # successful build - do not edit the tag by hand.
+          image: 348258987583.dkr.ecr.eu-north-1.amazonaws.com/sample-app:latest
           ports:
-            - containerPort: 80
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 15
           resources:
             requests:
               cpu: 20m
