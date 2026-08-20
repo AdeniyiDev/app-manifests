@@ -16,5 +16,5 @@ spec:
       failureLimit: 1
       provider:
         web:
-          url: "http://sample-app.sample-app.svc.cluster.local/health"
+          url: "http://sample-app.sample-app.svc.cluster.local/this-path-does-not-exist"
           jsonPath: "{$.status}"

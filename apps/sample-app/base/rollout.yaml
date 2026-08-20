@@ -20,6 +20,9 @@ spec:
           # (see sample-app/.github/workflows/ci.yml) after every
           # successful build - do not edit the tag by hand.
           image: 348258987583.dkr.ecr.eu-north-1.amazonaws.com/sample-app:5d6ea7416d0d9601f2e99df62996050d7be5b5e1
+          env:
+            - name: ROLLBACK_TEST
+              value: "deliberately-triggering-failed-analysis"
           ports:
             - containerPort: 3000
           readinessProbe:
