@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: sample-app-health-check
+spec:
+  metrics:
+    - name: health-check
+      # How often to check, and how many times, during this analysis run.
+      interval: 10s
+      count: 3
+      # The check passes only if the app's /health endpoint reports "ok"
+      # three times in a row. If it fails enough times, Argo Rollouts
+      # automatically aborts the rollout and reverts to the last stable
+      # version - no human needs to notice and intervene.
+      successCondition: result == "ok"
+      failureLimit: 1
+      provider:
+        web:
+          url: "http://sample-app.sample-app.svc.cluster.local/health"
+          jsonPath: "{$.status}"

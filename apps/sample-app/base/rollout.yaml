@@ -20,9 +20,6 @@ spec:
           # (see sample-app/.github/workflows/ci.yml) after every
           # successful build - do not edit the tag by hand.
           image: 348258987583.dkr.ecr.eu-north-1.amazonaws.com/sample-app:128152ca393e209c0e2c6f96be7cdf8194e39e6c
-          env:
-            - name: DEMO_REVISION
-              value: "v3-canary-visible-test"
           ports:
             - containerPort: 3000
           readinessProbe:
@@ -49,8 +46,14 @@ spec:
       steps:
         - setWeight: 20
         - pause:
-            duration: 2m
+            duration: 30s
+        - analysis:
+            templates:
+              - templateName: sample-app-health-check
         - setWeight: 50
         - pause:
-            duration: 2m
+            duration: 30s
+        - analysis:
+            templates:
+              - templateName: sample-app-health-check
         - setWeight: 100
