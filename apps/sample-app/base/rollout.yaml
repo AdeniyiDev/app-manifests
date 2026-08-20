@@ -19,7 +19,7 @@ spec:
           # This line gets automatically updated by the CI pipeline
           # (see sample-app/.github/workflows/ci.yml) after every
           # successful build - do not edit the tag by hand.
-          image: 348258987583.dkr.ecr.eu-north-1.amazonaws.com/sample-app:128152ca393e209c0e2c6f96be7cdf8194e39e6c
+          image: 348258987583.dkr.ecr.eu-north-1.amazonaws.com/sample-app:5d6ea7416d0d9601f2e99df62996050d7be5b5e1
           ports:
             - containerPort: 3000
           readinessProbe:
