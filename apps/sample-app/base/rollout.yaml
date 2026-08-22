@@ -19,7 +19,7 @@ spec:
           # This line gets automatically updated by the CI pipeline
           # (see sample-app/.github/workflows/ci.yml) after every
           # successful build - do not edit the tag by hand.
-          image: 348258987583.dkr.ecr.eu-north-1.amazonaws.com/sample-app:1f17af42101a51d21d95e159b9af97713a08ef9c
+          image: 348258987583.dkr.ecr.eu-north-1.amazonaws.com/sample-app:eaf16bfb84077ca01e4589bf7ea7300367740ab7
           env:
             - name: ROLLBACK_TEST
               value: "deliberately-triggering-failed-analysis"
